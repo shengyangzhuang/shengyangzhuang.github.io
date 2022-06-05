@@ -19,7 +19,7 @@ body {
 	padding-top: 0.5em;
 	padding-left: 8px;
 	padding-right: 8px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	width: auto;
 	white-space: nowrap;
     text-align: left;
@@ -33,8 +33,8 @@ body {
 
 #layout-content {
 	padding-top: 0.0em;
-	padding-left: 1.0em;
-	padding-right: 1.0em;
+	padding-left: 0.8em;
+	padding-right: 0.8em;
     border: none;
     background: white;
     text-align: left;
@@ -42,7 +42,7 @@ body {
 }
 
 #layout-menu a {
-	line-height: 1.5em;
+	line-height: 1.2em;
 	margin-left: 0.5em;
 }
 
@@ -51,7 +51,7 @@ tt {
 }
 
 pre, tt {
-	font-size: 100%;
+	font-size: 95%;
 	font-family: monaco, monospace;
 }
 
