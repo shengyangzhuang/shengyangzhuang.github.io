@@ -971,8 +971,8 @@ section {
 --------------------------------------------------------------*/
 .flip-card {
     perspective: 1000px;
-    width: 300px; /* Set a fixed width */
-    height: 300px; /* Set a fixed height */
+    width: 150px; /* Set a fixed width */
+    height: 150px; /* Set a fixed height */
     margin: 10px; /* Optional: adds some space around each card */
 }
 
