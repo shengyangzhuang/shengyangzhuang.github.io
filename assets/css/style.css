@@ -1089,3 +1089,108 @@ section {
     box-sizing: border-box;
     text-align: center;
 }
+
+/*--------------------------------------------------------------
+# Project Gallery
+--------------------------------------------------------------*/
+.work-item-wrap {
+    width: 540px; /* Replace with the desired width */
+    height: 300px; /* Replace with the desired height */
+    position: relative;
+    overflow: hidden;
+}
+
+.image-fit {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.work-item-wrap:hover .image-fit {
+    transform: scale(1.1); /* Optional scale effect */
+    opacity: 0.3; /* Dim the image */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.work-item-wrap:hover .overlay {
+    opacity: 1; /* Show overlay */
+}
+
+.text-overlay {
+    color: white;
+    text-align: center;
+    transform: translateY(20px); /* Pushes the content down */
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.work-item-wrap:hover .text-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.view-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: #149ddd; /* Button background color */
+    padding: 10px 20px;
+    margin-top: 10px; /* Space above the button */
+    border: none;
+    transition: background-color 0.3s;
+    border-radius: 20px; /* Rounded corners for the button */
+}
+
+.view-button:hover {
+    background-color: #37b3ed;
+}
+
+/* Additional styles for heading and paragraph in overlay */
+.overlay h3, .overlay p {
+    margin: 5px 0; /* Add space between title and paragraph */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* Adjustments for tablet and below */
+    .view-button {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjustments for mobile */
+    .overlay {
+        background: rgba(0, 0, 0, 0.7); /* Darker background for better readability */
+    }
+}
+
+.work-item-wrap {
+    border-radius: 15px; /* This value can be adjusted to increase or decrease the roundness */
+    overflow: hidden; /* Ensures that all inner elements also conform to the rounded corners */
+    /* ... your other styles ... */
+}
+
+/* Apply border-radius to any inner elements that also need rounded corners */
+.work-item-wrap .image-fit, .work-item-wrap .overlay {
+    border-radius: 15px; /* This should match the container's border-radius */
+    /* ... your other styles ... */
+}
+
+
+
+
