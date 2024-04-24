@@ -1,6 +1,7 @@
 /**
-* Template Name: iPortfolio - v1.1.0
+* Template Name: iPortfolio
 * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+* Updated: Mar 17 2024 with Bootstrap v5.3.3
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -13,8 +14,13 @@ body {
   color: #272829;
 }
 
+p {
+  font-size: 17px; /* Example size, adjust as needed */
+}
+
 a {
   color: #149ddd;
+  text-decoration: none;
 }
 
 a:hover {
@@ -22,7 +28,12 @@ a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Raleway", sans-serif;
 }
 
@@ -31,29 +42,32 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 .back-to-top {
   position: fixed;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #149ddd;
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  right: 15px;
-  bottom: 15px;
-  background: #149ddd;
-  color: #fff;
-  transition: display 0.5s ease-in-out;
-  z-index: 99999;
+  transition: all 0.4s;
 }
 
 .back-to-top i {
-  font-size: 24px;
-  position: absolute;
-  top: 7px;
-  left: 8px;
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
 }
 
 .back-to-top:hover {
-  color: #fff;
   background: #2eafec;
-  transition: background 0.2s ease-in-out;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 /*--------------------------------------------------------------
@@ -66,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   width: 300px;
   transition: all ease-in-out 0.5s;
-  z-index: 9999;
+  z-index: 9997;
   transition: all 0.5s;
   padding: 0 15px;
   background: #040b14;
@@ -90,7 +104,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
 }
 
-#header .profile h1 a, #header .profile h1 a:hover {
+#header .profile h1 a,
+#header .profile h1 a:hover {
   color: #fff;
   text-decoration: none;
 }
@@ -120,12 +135,25 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 300px;
 }
 
+.container,
+.container-fluid {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 @media (max-width: 1199px) {
   #header {
     left: -300px;
   }
+
   #main {
     margin-left: 0;
+  }
+
+  .container,
+  .container-fluid {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
@@ -134,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 /* Desktop Navigation */
 .nav-menu {
-  padding-top: 30px;
+  padding: 30px 0 0 0;
 }
 
 .nav-menu * {
@@ -143,12 +171,13 @@ h1, h2, h3, h4, h5, h6 {
   list-style: none;
 }
 
-.nav-menu > ul > li {
+.nav-menu>ul>li {
   position: relative;
   white-space: nowrap;
 }
 
-.nav-menu a {
+.nav-menu a,
+.nav-menu a:focus {
   display: flex;
   align-items: center;
   color: #a8a9b4;
@@ -158,18 +187,25 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 15px;
 }
 
-.nav-menu a i {
+.nav-menu a i,
+.nav-menu a:focus i {
   font-size: 24px;
   padding-right: 8px;
   color: #6f7180;
 }
 
-.nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
+.nav-menu a:hover,
+.nav-menu .active,
+.nav-menu .active:focus,
+.nav-menu li:hover>a {
   text-decoration: none;
   color: #fff;
 }
 
-.nav-menu a:hover i, .nav-menu .active > a i, .nav-menu li:hover > a i {
+.nav-menu a:hover i,
+.nav-menu .active i,
+.nav-menu .active:focus i,
+.nav-menu li:hover>a i {
   color: #149ddd;
 }
 
@@ -180,17 +216,19 @@ h1, h2, h3, h4, h5, h6 {
   top: 15px;
   z-index: 9998;
   border: 0;
-  background: none;
   font-size: 24px;
   transition: all 0.4s;
   outline: none !important;
-  line-height: 1;
+  background-color: #149ddd;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  border-radius: 50px;
   cursor: pointer;
-  text-align: right;
-}
-
-.mobile-nav-toggle i {
-  color: #149ddd;
 }
 
 .mobile-nav-active {
@@ -201,17 +239,13 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
 }
 
-.mobile-nav-active .mobile-nav-toggle i {
-  color: #fff;
-}
-
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/imperial.jpg") top center;
   background-size: cover;
 }
 
@@ -265,6 +299,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px;
     line-height: 36px;
   }
+
   #hero h2 {
     font-size: 18px;
     line-height: 24px;
@@ -298,7 +333,7 @@ section {
 }
 
 .section-title h2::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 50px;
@@ -327,13 +362,20 @@ section {
 }
 
 .about .content ul li {
-  padding-bottom: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.about .content ul strong {
+  margin-right: 10px;
 }
 
 .about .content ul i {
-  font-size: 20px;
-  padding-right: 2px;
+  font-size: 16px;
+  margin-right: 5px;
   color: #149ddd;
+  line-height: 0;
 }
 
 .about .content p:last-child {
@@ -357,6 +399,7 @@ section {
   font-size: 44px;
   color: #149ddd;
   float: left;
+  line-height: 0;
 }
 
 .facts .count-box span {
@@ -394,9 +437,10 @@ section {
 # Akills
 --------------------------------------------------------------*/
 .skills .progress {
-  height: 50px;
+  height: 60px;
   display: block;
   background: none;
+  border-radius: 0;
 }
 
 .skills .progress .skill {
@@ -416,12 +460,13 @@ section {
 
 .skills .progress-bar-wrap {
   background: #dce8f8;
+  height: 10px;
 }
 
 .skills .progress-bar {
   width: 1px;
   height: 10px;
-  transition: .9s;
+  transition: 0.9s;
   background-color: #149ddd;
 }
 
@@ -516,7 +561,8 @@ section {
   transition: all 0.3s ease-in-out;
 }
 
-.portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li.filter-active {
   color: #149ddd;
 }
 
@@ -569,7 +615,7 @@ section {
   background: rgba(20, 157, 221, 0.95);
 }
 
-.portfolio .portfolio-wrap .portfolio-links a + a {
+.portfolio .portfolio-wrap .portfolio-links a+a {
   border-left: 1px solid #37b3ed;
 }
 
@@ -587,31 +633,75 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Portfolio Details
+--------------------------------------------------------------*/
+.portfolio-details {
+  padding-top: 40px;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #149ddd;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #149ddd;
+}
+
+.portfolio-details .portfolio-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(5, 13, 24, 0.08);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li+li {
+  margin-top: 10px;
+}
+
+.portfolio-details .portfolio-description {
+  padding-top: 30px;
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
 .services .icon-box {
   margin-bottom: 20px;
-}
-
-.services .content h3 {
-  font-weight: 700;
-  font-size: 26px;
-  color: #173b6c;
-}
-
-.services .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.services .content ul li {
-  padding-bottom: 10px;
-}
-
-.services .content ul i {
-  font-size: 20px;
-  padding-right: 2px;
-  color: #149ddd;
 }
 
 .services .icon {
@@ -630,6 +720,7 @@ section {
 .services .icon i {
   color: #fff;
   font-size: 24px;
+  line-height: 0;
 }
 
 .services .icon-box:hover .icon {
@@ -664,6 +755,11 @@ section {
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+
 .testimonials .testimonial-item {
   box-sizing: content-box;
   text-align: center;
@@ -689,7 +785,8 @@ section {
   margin: 0;
 }
 
-.testimonials .testimonial-item .quote-icon-left, .testimonials .testimonial-item .quote-icon-right {
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
   color: #c3e8fa;
   font-size: 26px;
 }
@@ -730,28 +827,21 @@ section {
   left: calc(50% - 20px);
 }
 
-.testimonials .owl-nav, .testimonials .owl-dots {
-  margin-top: 5px;
-  text-align: center;
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
 }
 
-.testimonials .owl-dot {
-  display: inline-block;
-  margin: 0 5px;
+.testimonials .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  background-color: #ddd !important;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #149ddd;
 }
 
-.testimonials .owl-dot.active {
-  background-color: #149ddd !important;
-}
-
-@media (max-width: 767px) {
-  .testimonials {
-    margin: 30px 10px;
-  }
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #149ddd;
 }
 
 /*--------------------------------------------------------------
@@ -825,9 +915,17 @@ section {
   color: #fff;
 }
 
-.contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
+.contact .info .email:hover i,
+.contact .info .address:hover i,
+.contact .info .phone:hover i {
   background: #149ddd;
   color: #fff;
+}
+
+.contact .info-image {
+  width: 100%; /* Match the width of the info card */
+  height: auto; /* Maintain aspect ratio */
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12); /* Same shadow as info card */
 }
 
 .contact .php-email-form {
@@ -853,9 +951,13 @@ section {
   display: none;
   color: #fff;
   background: #ed3c0d;
-  text-align: center;
+  text-align: left;
   padding: 15px;
   font-weight: 600;
+}
+
+.contact .php-email-form .error-message br+br {
+  margin-top: 25px;
 }
 
 .contact .php-email-form .sent-message {
@@ -883,11 +985,19 @@ section {
   margin: 0 10px -6px 0;
   border: 3px solid #18d26e;
   border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input, .contact .php-email-form textarea {
+.contact .php-email-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact .php-email-form label {
+  padding-bottom: 8px;
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
@@ -898,10 +1008,10 @@ section {
 }
 
 .contact .php-email-form textarea {
-  padding: 10px 12px;
+  padding: 10px 15px;
 }
 
-.contact .php-email-form button[type="submit"] {
+.contact .php-email-form button[type=submit] {
   background: #149ddd;
   border: 0;
   padding: 10px 24px;
@@ -910,25 +1020,64 @@ section {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type="submit"]:hover {
+.contact .php-email-form button[type=submit]:hover {
   background: #37b3ed;
-}
-
-@-webkit-keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes animate-loading {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+  padding: 20px 0;
+  background: #f9f9f9;
+}
+
+.breadcrumbs h2 {
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+.breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.breadcrumbs ol li+li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #0e2442;
+  content: "/";
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs .d-flex {
+    display: block !important;
+  }
+
+  .breadcrumbs ol {
+    display: block;
+  }
+
+  .breadcrumbs ol li {
+    display: inline-block;
   }
 }
 
@@ -948,6 +1097,7 @@ section {
 }
 
 #footer .copyright {
+  font-size: 13px;
   text-align: center;
 }
 
@@ -965,232 +1115,3 @@ section {
     padding-right: 20px 15px;
   }
 }
-
-/*--------------------------------------------------------------
-# Flip card
---------------------------------------------------------------*/
-/* Ensuring the row's columns are flex containers */
-.row {
-    display: flex;
-    flex-wrap: wrap; /* Allows multiple rows if necessary */
-    align-items: stretch; /* Aligns items vertically */
-}
-
-.flip-card {
-    perspective: 1000px;
-    width: 100%; /* Full width of the column */
-    min-height: 300px; /* Minimum height to ensure content visibility */
-    overflow: visible; /* Ensures nothing is hidden */
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.flip-card-front {
-    background-size: cover; /* Ensures the background covers the area */
-    background-position: center; /* Centers the background in the available space */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-end; /* Keeps the title at the bottom */
-    justify-content: center;
-}
-
-.title {
-    width: 100%;
-    padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
-    color: white;
-    text-align: center;
-    margin: 0; /* Removes default margin */
-}
-
-.flip-card-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column; /* Organizes children (p and a) in a column */
-    justify-content: center; /* Centers content vertically */
-    align-items: center; /* Centers content horizontally */
-    overflow: hidden; /* Ensures no spillover */
-}
-
-.flip-card-front img, .flip-card-back img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-}
-
-.flip-card-front {
-    z-index: 2;
-    transform: rotateY(0deg);
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
-    z-index: 1;
-    background: #fff; /* Ensure visibility */
-    color: #333; /* Text color for readability */
-    padding: 20px; /* Adds padding around the content */
-    box-sizing: border-box; /* Includes padding in width/height */
-    text-align: center; /* Aligns text to the center */
-}
-
-.flip-card-back p {
-    font-size: 14px;
-    margin: 0 0 10px;
-    color: #333;
-    line-height: 1.4;
-}
-
-.flip-card-back h3, .flip-card-back h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.flip-card-back a {
-    font-size: 12px;
-    padding: 5px 10px;
-    margin-top: 10px; /* Ensures a small gap between the text and the button */
-}
-
-.flip-card-back {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-/*--------------------------------------------------------------
-# Project Gallery
---------------------------------------------------------------*/
-.work-item-wrap {
-    width: 540px; /* Replace with the desired width */
-    height: 300px; /* Replace with the desired height */
-    position: relative;
-    overflow: hidden;
-}
-
-.image-fit {
-    width: 100%;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.work-item-wrap:hover .image-fit {
-    transform: scale(1.1); /* Optional scale effect */
-    opacity: 0.3; /* Dim the image */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.work-item-wrap:hover .overlay {
-    opacity: 1; /* Show overlay */
-}
-
-.text-overlay {
-    color: white;
-    text-align: center;
-    transform: translateY(20px); /* Pushes the content down */
-    opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.work-item-wrap:hover .text-overlay {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.view-button {
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    background-color: #149ddd; /* Button background color */
-    padding: 10px 20px;
-    margin-top: 10px; /* Space above the button */
-    border: none;
-    transition: background-color 0.3s;
-    border-radius: 20px; /* Rounded corners for the button */
-}
-
-.view-button:hover {
-    background-color: #37b3ed;
-}
-
-/* Additional styles for heading and paragraph in overlay */
-.overlay h3, .overlay p {
-    margin: 5px 0; /* Add space between title and paragraph */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    /* Adjustments for tablet and below */
-    .view-button {
-        padding: 8px 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    /* Adjustments for mobile */
-    .overlay {
-        background: rgba(0, 0, 0, 0.7); /* Darker background for better readability */
-    }
-}
-
-.work-item-wrap {
-    border-radius: 15px; /* This value can be adjusted to increase or decrease the roundness */
-    overflow: hidden; /* Ensures that all inner elements also conform to the rounded corners */
-    /* ... your other styles ... */
-}
-
-/* Apply border-radius to any inner elements that also need rounded corners */
-.work-item-wrap .image-fit, .work-item-wrap .overlay {
-    border-radius: 15px; /* This should match the container's border-radius */
-    /* ... your other styles ... */
-}
-
-
-
-
