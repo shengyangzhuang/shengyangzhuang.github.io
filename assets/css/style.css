@@ -1123,3 +1123,29 @@ section {
     padding-right: 20px 15px;
   }
 }
+
+.social-media {
+    text-align: center;
+    padding: 20px;
+    background: #f5f8fd;  /* Light grey background #f0f0f0*/
+}
+.social-media h3 {
+    margin-bottom: 20px;
+    color: #333;  /* Dark grey color for the text */
+}
+.social-media a {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #666; /* Darker grey for icons */
+    transition: color 0.3s;
+}
+.social-media a:hover {
+    color: #0056b3; /* Change color on hover */
+}
+.social-media a img {
+    width: 24px;  /* Or another size to match your design */
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 1px;  /* Spacing between icons */
+}
+
