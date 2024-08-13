@@ -537,6 +537,12 @@ section {
   background: #fff;
   border: 2px solid #1f5297;
 }
+.event-description {
+    display: block;
+    padding-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 5px
+}
 
 /*--------------------------------------------------------------
 # Portfolio
