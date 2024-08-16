@@ -1149,9 +1149,10 @@ section {
     color: #0056b3; /* Change color on hover */
 }
 .social-media a img {
-    width: 24px;  /* Or another size to match your design */
-    height: 38px;
+    width: 22px;  /* Or another size to match your design */
+    height: 22px;
     vertical-align: middle;
     margin-right: 1px;  /* Spacing between icons */
+    margin-bottom:5px;
 }
 
