@@ -1,0 +1,316 @@
+/* AI chatbot widget — styled to match the iPortfolio theme
+   (accent #149ddd, dark #040b14, Open Sans) */
+
+#sz-chatbot {
+    font-family: "Open Sans", sans-serif;
+}
+
+/* Floating toggle button */
+/* Matches the template's back-to-top button (40px circle @ right 15px,
+   bottom 15px) and stacks directly above it as a uniform column */
+#sz-chat-toggle {
+    position: fixed;
+    right: 15px;
+    bottom: 63px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #149ddd;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(4, 11, 20, 0.25);
+    z-index: 9997;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s;
+    /* Springy pop-in as the panel finishes morphing into this icon */
+    animation: sz-toggle-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
+}
+
+#sz-chat-toggle:hover {
+    background: #2eafec;
+}
+
+#sz-chat-toggle.sz-hidden {
+    display: none;
+}
+
+@keyframes sz-toggle-in {
+    from { opacity: 0; transform: scale(0.2); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Panel */
+/* Bottom edge sits above the back-to-top button (top edge at 55px from
+   bottom) so the button stays visible and clickable while chatting */
+#sz-chat-panel {
+    position: fixed;
+    right: 15px;
+    bottom: 63px;
+    width: 400px;
+    max-width: calc(100vw - 24px);
+    height: 400px;
+    max-height: calc(100vh - 83px);
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(4, 11, 20, 0.35);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9998;
+    /* The panel's bottom-right corner sits exactly on the toggle bubble, so
+       scaling from that origin makes the window morph into/out of the icon. */
+    transform-origin: 100% 100%;
+    animation: sz-panel-in 0.44s cubic-bezier(0.32, 0.85, 0.3, 1);
+}
+
+#sz-chat-panel[hidden] {
+    display: none;
+}
+
+/* iOS-style close: the window shrinks and rounds into the bubble */
+#sz-chat-panel.sz-closing {
+    animation: sz-panel-out 0.36s cubic-bezier(0.5, 0, 0.75, 0.4) forwards;
+    pointer-events: none;
+}
+
+/* Contents fade out early so it reads as morphing into an icon,
+   not like a shrunken screenshot of the window */
+.sz-closing .sz-chat-messages,
+.sz-closing .sz-chat-suggestions,
+.sz-closing .sz-chat-form,
+.sz-closing .sz-chat-footnote,
+.sz-closing .sz-chat-title div,
+.sz-closing #sz-chat-close {
+    opacity: 0;
+    transition: opacity 0.14s ease-out;
+}
+
+/* 400px panel → 40px bubble is exactly 0.1 scale */
+@keyframes sz-panel-in {
+    from { opacity: 0; transform: scale(0.1); border-radius: 50%; }
+    45%  { opacity: 1; }
+    to   { opacity: 1; transform: scale(1); border-radius: 14px; }
+}
+
+@keyframes sz-panel-out {
+    from { opacity: 1; transform: scale(1); border-radius: 14px; }
+    70%  { opacity: 1; }
+    to   { opacity: 0; transform: scale(0.1); border-radius: 50%; }
+}
+
+/* Respect accessibility preferences — no motion, just show/hide */
+@media (prefers-reduced-motion: reduce) {
+    #sz-chat-panel,
+    #sz-chat-panel.sz-closing,
+    #sz-chat-toggle {
+        animation: none;
+    }
+}
+
+/* Header */
+.sz-chat-header {
+    background: #040b14;
+    color: #fff;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.sz-chat-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sz-chat-title > i {
+    font-size: 24px;
+    color: #149ddd;
+}
+
+.sz-chat-title strong {
+    display: block;
+    font-size: 15px;
+    font-family: "Raleway", sans-serif;
+}
+
+.sz-chat-title span {
+    display: block;
+    font-size: 12px;
+    color: #a8a9b4;
+}
+
+#sz-chat-close {
+    background: none;
+    border: none;
+    color: #a8a9b4;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+#sz-chat-close:hover {
+    color: #fff;
+}
+
+/* Messages */
+.sz-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px 12px;
+    background: #f5f8fd;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sz-msg {
+    max-width: 88%;
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.sz-msg-assistant {
+    align-self: flex-start;
+    background: #fff;
+    color: #272829;
+    border: 1px solid #e4eaf4;
+    border-bottom-left-radius: 4px;
+}
+
+.sz-msg-user {
+    align-self: flex-end;
+    background: #149ddd;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.sz-msg a {
+    color: #149ddd;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+/* Typing indicator */
+.sz-typing {
+    display: flex;
+    gap: 4px;
+    padding: 13px 15px;
+}
+
+.sz-typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a8a9b4;
+    animation: sz-bounce 1.2s infinite;
+}
+
+.sz-typing span:nth-child(2) { animation-delay: 0.15s; }
+.sz-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes sz-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Suggestion chips */
+.sz-chat-suggestions {
+    padding: 8px 12px 0;
+    background: #f5f8fd;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+    max-height: 96px;
+    overflow-y: auto;
+}
+
+.sz-chat-suggestions[hidden] {
+    display: none;
+}
+
+.sz-chip {
+    border: 1px solid #149ddd;
+    background: #fff;
+    color: #149ddd;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sz-chip:hover {
+    background: #149ddd;
+    color: #fff;
+}
+
+/* Input */
+.sz-chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px 6px;
+    background: #f5f8fd;
+    flex-shrink: 0;
+}
+
+#sz-chat-input {
+    flex: 1;
+    border: 1px solid #d4dbe8;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    outline: none;
+    font-family: inherit;
+}
+
+#sz-chat-input:focus {
+    border-color: #149ddd;
+}
+
+.sz-chat-form button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #149ddd;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.sz-chat-form button:hover {
+    background: #37b3ed;
+}
+
+.sz-chat-footnote {
+    text-align: center;
+    font-size: 10.5px;
+    color: #a8a9b4;
+    padding: 2px 0 7px;
+    background: #f5f8fd;
+    flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    #sz-chat-panel {
+        right: 12px;
+        left: 12px;
+        width: auto;
+        height: 65vh;
+        bottom: 63px;
+    }
+}
