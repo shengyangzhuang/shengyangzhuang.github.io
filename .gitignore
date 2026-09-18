@@ -1,7 +1,28 @@
 # IDE and editor folders
 .vscode/
 .idea/
+.claude/
 
 # OS-generated files
 .DS_Store
 Thumbs.db
+
+# Local-only working files: build scripts, notes, scratch renders, source CAD.
+# Anything in here stays on this machine and is never pushed.
+dev/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node (only used for one-off mesh compression via npx)
+node_modules/
+package.json
+package-lock.json
+
+# Logs, environment and editor leftovers
+*.log
+.env
+~$*
